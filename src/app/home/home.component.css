@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.child {
+  cursor: pointer;
+  background-color: #fc95a1;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.logo {
+  width: 100px;
+}
+
+.name {
+  font-size: 1.5rem;
+}

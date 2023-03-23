@@ -1,0 +1,18 @@
+<div>
+  <h2>Voiçi les différentes activités sportives disponibles</h2>
+
+  <div class="container" *ngFor="let i of activityInfos()">
+    <div class="child">
+      <img class="logo" [src]="'../../../assets/' + i.img" alt="" />
+      <p class="name" [routerLink]="'/group/' + i.id">{{ i.name }}</p>
+      <!-- user can make it favorite or not -->
+      <button
+        class="favorite"
+        [ngClass]="{ 'favorite--active': i.favorite }"
+        (click)="toggleFavorite(i.id)"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

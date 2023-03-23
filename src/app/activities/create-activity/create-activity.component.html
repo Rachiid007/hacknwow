@@ -1,0 +1,73 @@
+<mat-card-header style="margin: 10px 0; font-size: 30px">
+  Create an activity
+</mat-card-header>
+
+<mat-card>
+  <form
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      color: blueviolet;
+    "
+    [formGroup]="createActivity"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <mat-label>Name </mat-label>
+      <input matInput type="text" formControlName="name" required />
+      <mat-error *ngIf="createActivity.get('name')?.invalid">
+        <span *ngIf="createActivity.get('name')?.errors?.['required']"
+          >Name is required</span
+        >
+        <span *ngIf="createActivity.get('name')?.errors?.['minlength']"
+          >Name must be at least
+          {{ createActivity.get('name')?.errors?.['minlength'].requiredLength }}
+          characters long</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type </mat-label>
+      <mat-select formControlName="type" required>
+        <mat-option *ngFor="let c of availableActivity" [value]="c.id">{{
+          c.name
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="createActivity.get('type')?.invalid">
+        <span *ngIf="createActivity.get('type')?.errors?.['required']"
+          >An activity is required</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        formControlName="datetime"
+        [matDatepicker]="releasedAtPicker"
+      />
+
+      <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+      </mat-datepicker-toggle>
+
+      <mat-datepicker #releasedAtPicker> </mat-datepicker>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="createActivity.pristine || createActivity.invalid"
+        extended
+      >
+        <mat-icon>save</mat-icon>
+        Create
+      </button>
+    </div>
+  </form>
+</mat-card>

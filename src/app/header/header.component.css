@@ -1,0 +1,26 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-display {
+  transform: scale(1.4);
+}
