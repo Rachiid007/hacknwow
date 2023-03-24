@@ -27,6 +27,7 @@ import { StoreModule } from '@ngrx/store';
 import { activityReducer } from './store/reducers/activity.reducer';
 import { DisplayActivitiesComponent } from './activities/display-activities/display-activities.component';
 import { JoinGroupComponent } from './group/join-group/join-group.component';
+import { BravoComponent } from './bravo/bravo.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { JoinGroupComponent } from './group/join-group/join-group.component';
     FavoritesActivityComponent,
     DisplayActivitiesComponent,
     JoinGroupComponent,
+    BravoComponent,
   ],
   imports: [
     BrowserModule,

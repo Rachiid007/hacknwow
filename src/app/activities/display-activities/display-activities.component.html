@@ -9,5 +9,35 @@
     >
       <mat-icon>favorite</mat-icon>
     </button>
+    <div class="group">
+      <img
+        *ngIf="i.doHaveGroup"
+        class="group1"
+        src="assets/group01.svg"
+        alt=""
+        [routerLink]="'/group/' + i.id + '/join'"
+      />
+      <img
+        *ngIf="!i.doHaveGroup"
+        class="group1"
+        src="assets/group-add.svg"
+        alt=""
+        [routerLink]="'/group/' + i.id + '/join'"
+      />
+    </div>
+    <!-- <img
+      *ngIf="i.doHaveGroup"
+      class="group2"
+      src="assets/group01.svg"
+      alt=""
+      [routerLink]="'/group/' + i.id"
+    />
+    <img
+      *ngIf="!i.doHaveGroup"
+      class="group2"
+      src="assets/group-add.svg"
+      alt=""
+      [routerLink]="'/group/' + i.id"
+    /> -->
   </div>
 </div>

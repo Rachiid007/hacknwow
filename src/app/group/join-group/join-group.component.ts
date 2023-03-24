@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -9,11 +9,43 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./join-group.component.css'],
 })
 export class JoinGroupComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   groupId!: number;
+  groups = [
+    {
+      id: 1,
+      name: 'Les marcheurs',
+      nbrMaxOfMembers: 10,
+      locality: 'Bxl',
+    },
+    {
+      id: 2,
+      name: 'Les footballeurs',
+      nbrMaxOfMembers: 10,
+      locality: 'Bxl',
+    },
+    {
+      id: 3,
+      name: 'Les joggeurs',
+      nbrMaxOfMembers: 10,
+      locality: 'Bxl',
+    },
+  ];
 
   ngOnInit() {
     this.groupId = +this.route.snapshot.params['id'];
+  }
+
+  joinGroupForm = new FormGroup({
+    name: new FormControl(''),
+    nbrMaxOfMembers: new FormControl(''),
+    locality: new FormControl(''),
+  });
+
+  onSubmit() {
+    console.log(this.joinGroupForm.value);
+    // redirect to group page
+    this.router.navigate(['/bravo']);
   }
 }

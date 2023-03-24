@@ -3,6 +3,7 @@ export interface Activity {
   name: string;
   type: ActivityType;
   img: string;
+  doHaveGroup?: boolean;
   favorite?: boolean;
   locality?: string;
   datetime_start?: string;

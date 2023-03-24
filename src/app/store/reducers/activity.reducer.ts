@@ -8,6 +8,14 @@ import { Activity, ActivityType } from '../models/activity.model';
 
 export const initialState: Activity[] = [
   {
+    id: 0,
+    name: 'Marche',
+    type: ActivityType.SPORT,
+    img: 'walk.svg',
+    favorite: true,
+    doHaveGroup: true,
+  },
+  {
     id: 1,
     name: 'Football',
     type: ActivityType.SPORT,
@@ -41,6 +49,7 @@ export const initialState: Activity[] = [
     type: ActivityType.COMBINATION,
     img: 'walk_and_museum.svg',
     favorite: false,
+    doHaveGroup: true,
   },
   {
     id: 6,

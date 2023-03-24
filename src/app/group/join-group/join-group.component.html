@@ -1,1 +1,19 @@
 <h2>Voici les groupes disponibles pour cette activité</h2>
+
+<form [formGroup]="joinGroupForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="group">Choisissez un groupe</label>
+    <select class="form-control" id="group" formControlName="group">
+      <option *ngFor="let group of groups" [ngValue]="group.id">
+        {{ group.name }}
+      </option>
+    </select>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!joinGroupForm.valid"
+  >
+    Rejoindre le groupe
+  </button>
+</form>

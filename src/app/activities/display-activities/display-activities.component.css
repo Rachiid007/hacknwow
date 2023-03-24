@@ -38,3 +38,8 @@
 .favorite--active {
   color: blue;
 }
+
+.group1 {
+  width: 40px;
+  cursor: pointer;
+}
