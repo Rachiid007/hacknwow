@@ -12,5 +12,6 @@ export interface Activity {
 export enum ActivityType {
   SPORT = 'Sport',
   CULTURE = 'Culture',
+  COMBINATION = 'Combination',
   OTHER = 'Other',
 }

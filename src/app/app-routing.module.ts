@@ -27,6 +27,10 @@ const routes: Routes = [
         component: ActivitiesComponent,
       },
       {
+        path: 'combination',
+        component: ActivitiesComponent,
+      },
+      {
         path: 'favorites',
         component: FavoritesActivityComponent,
       },

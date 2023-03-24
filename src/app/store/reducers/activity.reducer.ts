@@ -35,6 +35,20 @@ export const initialState: Activity[] = [
     img: 'museum.svg',
     favorite: true,
   },
+  {
+    id: 5,
+    name: 'Musée 2',
+    type: ActivityType.COMBINATION,
+    img: 'museum.svg',
+    favorite: false,
+  },
+  {
+    id: 6,
+    name: 'Marche 1',
+    type: ActivityType.COMBINATION,
+    img: 'walk.svg',
+    favorite: false,
+  },
 ];
 
 export const activityReducer = createReducer(

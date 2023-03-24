@@ -37,6 +37,11 @@ export class ActivitiesComponent implements OnInit {
         this.filteredActivities = activities.filter(
           (activity: Activity) => activity.type === ActivityType.CULTURE
         );
+      } else if (this.currentRoute === `/activity/combination`) {
+        this.title = 'combinées';
+        this.filteredActivities = activities.filter(
+          (activity: Activity) => activity.type === ActivityType.COMBINATION
+        );
       }
     });
   }
