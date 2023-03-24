@@ -8,6 +8,7 @@ import { MapsComponent } from 'src/app/maps/maps.component';
 import { ActivitiesComponent } from 'src/app/activities/activities.component';
 import { GroupComponent } from 'src/app/group/group.component';
 import { FavoritesActivityComponent } from 'src/app/activities/favorites-activity/favorites-activity.component';
+import { JoinGroupComponent } from './group/join-group/join-group.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +39,16 @@ const routes: Routes = [
   },
   {
     path: 'group/:id',
-    component: GroupComponent,
+    children: [
+      {
+        path: 'join',
+        component: JoinGroupComponent,
+      },
+      {
+        path: '',
+        component: GroupComponent,
+      },
+    ],
   },
   {
     path: 'maps',

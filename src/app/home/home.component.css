@@ -24,3 +24,7 @@
 .name {
   font-size: 1.5rem;
 }
+
+html {
+  background-image: url("../../assets/baground.png");
+}

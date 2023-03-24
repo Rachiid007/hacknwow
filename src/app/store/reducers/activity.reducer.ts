@@ -37,16 +37,16 @@ export const initialState: Activity[] = [
   },
   {
     id: 5,
-    name: 'Musée 2',
+    name: 'Marche et musée',
     type: ActivityType.COMBINATION,
-    img: 'museum.svg',
+    img: 'walk_and_museum.svg',
     favorite: false,
   },
   {
     id: 6,
-    name: 'Marche 1',
+    name: 'Théâtre et jogging',
     type: ActivityType.COMBINATION,
-    img: 'walk.svg',
+    img: 'teatre_and_jogging.svg',
     favorite: false,
   },
 ];
