@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import {
-  Activity,
-  ActivityType,
-} from 'src/app/activities/create-activity/create-activity.component';
+  addActivity,
+  updateActivity,
+  deleteActivity,
+} from '../store/actions/activity.action';
+
+import { Activity, ActivityType } from '../store/models/activity.model';
 
 @Component({
   selector: 'app-activities',
@@ -13,62 +16,47 @@ import {
   styleUrls: ['./activities.component.css'],
 })
 export class ActivitiesComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
-
-  currentRoute!: string;
+  constructor(
+    private store: Store<{ activities: [] }>,
+    private router: Router
+  ) {
+    this.activities$ = store.select('activities');
+  }
 
   ngOnInit(): void {
     this.currentRoute = this.router.url;
-  }
-
-  activityInfos(): any {
-    if (this.currentRoute === `/activity/sport`) {
-      return this.availableSports.filter(
-        (sport) => sport.type === ActivityType.SPORT
-      );
-    } else if (this.currentRoute === `/activity/culture`) {
-      return this.availableSports.filter(
-        (sport) => sport.type === ActivityType.CULTURE
-      );
-    }
-  }
-
-  toggleFavorite(activityId: number): void {
-    this.availableSports.forEach((activity) => {
-      if (activity.id === activityId) {
-        activity.favorite = !activity.favorite;
+    this.activities$.subscribe((activities) => {
+      console.log(activities);
+      if (this.currentRoute === `/activity/sport`) {
+        this.title = 'sportives';
+        this.filteredActivities = activities.filter(
+          (activity: Activity) => activity.type === ActivityType.SPORT
+        );
+      } else if (this.currentRoute === `/activity/culture`) {
+        this.title = 'culturelles';
+        this.filteredActivities = activities.filter(
+          (activity: Activity) => activity.type === ActivityType.CULTURE
+        );
       }
     });
   }
 
-  availableSports: Activity[] = [
-    {
-      id: 1,
-      name: 'Football',
-      type: ActivityType.SPORT,
-      img: 'football.svg',
-      favorite: false,
-    },
-    {
-      id: 2,
-      name: 'Basketball',
-      type: ActivityType.SPORT,
-      img: 'basketball.svg',
-      favorite: true,
-    },
-    {
-      id: 3,
-      name: 'Fitness',
-      type: ActivityType.SPORT,
-      img: 'fitness.svg',
-      favorite: false,
-    },
-    {
-      id: 4,
-      name: 'Musée 1',
-      type: ActivityType.CULTURE,
-      img: 'museum.svg',
-      favorite: true,
-    },
-  ];
+  currentRoute!: string;
+  activities$: Observable<any>;
+  filteredActivities: Activity[] = [];
+  title!: string;
+
+  toggleFavorite(activityId: number): void {
+    this.store.dispatch(
+      updateActivity({ id: activityId, changes: { favorite: true } })
+    );
+  }
+
+  deleteActivity(activityId: number): void {
+    this.store.dispatch(deleteActivity({ id: activityId }));
+  }
+
+  addActivity(activity: any): void {
+    this.store.dispatch(addActivity({ activity }));
+  }
 }

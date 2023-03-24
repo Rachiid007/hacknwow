@@ -23,6 +23,10 @@ import { CreateActivityComponent } from './activities/create-activity/create-act
 import { ActivitiesComponent } from './activities/activities.component';
 import { FavoritesActivityComponent } from './activities/favorites-activity/favorites-activity.component';
 
+import { StoreModule } from '@ngrx/store';
+import { activityReducer } from './store/reducers/activity.reducer';
+import { DisplayActivitiesComponent } from './activities/display-activities/display-activities.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +38,7 @@ import { FavoritesActivityComponent } from './activities/favorites-activity/favo
     GroupComponent,
     ActivitiesComponent,
     FavoritesActivityComponent,
+    DisplayActivitiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,8 @@ import { FavoritesActivityComponent } from './activities/favorites-activity/favo
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
+    StoreModule.forRoot({ activities: activityReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,13 @@
+<div class="container" *ngFor="let i of activities">
+  <div class="child">
+    <img class="logo" [src]="'../../../assets/' + i.img" alt="" />
+    <p class="name" [routerLink]="'/group/' + i.id">{{ i.name }}</p>
+    <button
+      class="favorite"
+      [ngClass]="{ 'favorite--active': i.favorite }"
+      (click)="toggleFavorite(i.id)"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+</div>
