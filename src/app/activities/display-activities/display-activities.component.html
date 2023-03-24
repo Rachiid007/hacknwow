@@ -1,6 +1,6 @@
 <div class="container" *ngFor="let i of activities">
   <div class="child">
-    <img class="logo" [src]="'../../../assets/' + i.img" alt="" />
+    <img class="logo" [src]="'/src/assets/' + i.img" alt="" />
     <p class="name" [routerLink]="'/group/' + i.id">{{ i.name }}</p>
     <button
       class="favorite"
