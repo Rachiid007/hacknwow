@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { Activity, ActivityType } from '../../store/models/activity.model';
+
 @Component({
   selector: 'app-create-activity',
   templateUrl: './create-activity.component.html',
@@ -17,29 +19,13 @@ export class CreateActivityComponent {
   });
 
   availableActivity = [
-    { id: 1, name: 'Running' },
-    { id: 2, name: 'Cycling' },
-    { id: 3, name: 'Swimming' },
+    { id: 1, name: ActivityType.SPORT },
+    { id: 2, name: ActivityType.CULTURE },
+    { id: 3, name: ActivityType.COMBINATION },
+    { id: 4, name: ActivityType.OTHER },
   ];
 
   onSubmit() {
     console.log('yep, I receid it !');
   }
-}
-
-export interface Activity {
-  id: number;
-  name: string;
-  type: ActivityType;
-  img: string;
-  favorite?: boolean;
-  locality?: string;
-  datetime_start?: string;
-  datetime_end?: string;
-}
-
-export enum ActivityType {
-  SPORT = 'Sport',
-  CULTURE = 'Culture',
-  OTHER = 'Other',
 }
